@@ -1,7 +1,7 @@
 package huffman
 
 class Huffman {
-    private val codeTreeNodes = mutableListOf<CodeTreeNode>()
+     val codeTreeNodes = mutableListOf<CodeTreeNode>()
 
     /**
      * Кодирование
@@ -24,7 +24,7 @@ class Huffman {
     /**
      * Обход дерева Хаффмана
      */
-    private fun huffmanTreeTraversal(codeTreeNodes: MutableList<CodeTreeNode>): CodeTreeNode {
+     fun huffmanTreeTraversal(codeTreeNodes: MutableList<CodeTreeNode>): CodeTreeNode {
         while (codeTreeNodes.size > 1) {
             codeTreeNodes.sort()
             val left = codeTreeNodes.removeAt(codeTreeNodes.size - 1)
