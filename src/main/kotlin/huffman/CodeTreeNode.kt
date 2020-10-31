@@ -1,5 +1,8 @@
 package huffman
 
+/**
+ * Класс, описывающий узлы дерева Хаффмана
+ */
 class CodeTreeNode(_content: Char?, _weight: Int?) : Comparable<CodeTreeNode> {
     var content: Char? = null
     var weight: Int? = null
@@ -7,9 +10,12 @@ class CodeTreeNode(_content: Char?, _weight: Int?) : Comparable<CodeTreeNode> {
     var rightChild: CodeTreeNode? = null
 
     var frequencies = Parser().frequencyTable
-      val codesMap = mutableMapOf<Char, String>().toSortedMap()
+    private val codesMap = mutableMapOf<Char, String>().toSortedMap()
 
-    fun fillCodesTable():Map<Char,String> {
+    /**
+     * Запонение таблицы символов(возможно обьединение)
+     */
+    fun fillCodesTable(): Map<Char, String> {
         for (key in frequencies.keys) {
             codesMap[key] = findCodeForChar(key, "")
         }
@@ -31,6 +37,9 @@ class CodeTreeNode(_content: Char?, _weight: Int?) : Comparable<CodeTreeNode> {
         return other.weight!! - weight!!
     }
 
+    /**
+     * Нахождение кодов для каждого символа
+     */
     private fun findCodeForChar(char: Char, parentPath: String): String? {
         if (content == char)
             return parentPath

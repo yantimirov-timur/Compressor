@@ -2,6 +2,9 @@ package huffman
 
 import java.io.File
 
+/**
+ * Класс отвечающий за обработку текста
+ */
 class Parser {
     var input = File("input//inputText").readText()
     val frequencyTable = countFrequency(input)

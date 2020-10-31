@@ -4,7 +4,7 @@ class Huffman {
      val codeTreeNodes = mutableListOf<CodeTreeNode>()
 
     /**
-     * Кодирование
+     * Кодирование по Хаффману
      */
     fun huffmanEncode(sourceText: String): String {
         for (char in Parser().countFrequency(sourceText).keys) {
