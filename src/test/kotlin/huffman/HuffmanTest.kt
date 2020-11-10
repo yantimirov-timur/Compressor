@@ -8,16 +8,15 @@ internal class HuffmanTest {
 
     @Test
     fun huffmanEncode() {
-        val testString = "01011101101011000101110"
+        val encodedTestString = "01011101101011000101110"
 
-        assertEquals(testString, testHuffman.huffmanEncode(Parser().input))
+        assertEquals(encodedTestString, testHuffman.huffmanEncode(Parser().input))
     }
 
     @Test
     fun huffmanDecode() {
         val encoded = testHuffman.huffmanEncode(Parser().input)
         val tree = testHuffman.huffmanTreeTraversal(testHuffman.codeTreeNodes)
-
         val decode  = testHuffman.huffmanDecode(encoded,tree)
 
         assertEquals("abracadabra",decode)
