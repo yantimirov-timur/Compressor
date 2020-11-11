@@ -1,9 +1,8 @@
 import huffman.Huffman
 import huffman.Parser
 
-fun main(args: Array<String>) {
+fun main() {
     val huffman = Huffman()
-
     val encoded = huffman.huffmanEncode(Parser().input)
     val tree = huffman.huffmanTreeTraversal(huffman.codeTreeNodes)
     val decoded = Huffman().huffmanDecode(encoded,tree)

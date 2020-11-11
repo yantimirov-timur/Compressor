@@ -1,13 +1,22 @@
 package huffman
 
 /**
- * Класс, описывающий узлы дерева Хаффмана
+ * Класс, описывающий узлы и дерево Хаффмана
  */
-class CodeTreeNode(_content: Char?, _weight: Int?) : Comparable<CodeTreeNode> {
-    var content: Char? = null
-    var weight: Int? = null
-    var leftChild: CodeTreeNode? = null
-    var rightChild: CodeTreeNode? = null
+data class CodeTreeNode(
+        var content: Char? = null,
+        var weight: Int? = null,
+        var leftChild: CodeTreeNode? = null,
+        var rightChild: CodeTreeNode? = null) : Comparable<CodeTreeNode> {
+
+
+    constructor(content: Char?,
+                weight: Int?
+    ) : this(content, weight, leftChild = null, rightChild = null)
+
+    override fun compareTo(other: CodeTreeNode): Int {
+        return other.weight!! - weight!!
+    }
 
     var frequencies = Parser().frequencyTable
     private val codesMap = mutableMapOf<Char, String>().toSortedMap()
@@ -20,21 +29,6 @@ class CodeTreeNode(_content: Char?, _weight: Int?) : Comparable<CodeTreeNode> {
             codesMap[key] = findCodeForChar(key, "")
         }
         return codesMap
-    }
-
-    init {
-        content = _content
-        weight = _weight
-    }
-
-    constructor(_content: Char?, _weight: Int?, _leftChild: CodeTreeNode?, _rightChild: CodeTreeNode?) :
-            this(_content, _weight) {
-        leftChild = _leftChild
-        rightChild = _rightChild
-    }
-
-    override fun compareTo(other: CodeTreeNode): Int {
-        return other.weight!! - weight!!
     }
 
     /**
