@@ -1,9 +1,7 @@
 sudo: false
 
 language: jvm
-jdk:
-  - "12"
-
+jdk: oraclejdk8
 
 branches:
   only:
