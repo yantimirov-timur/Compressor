@@ -1,12 +1,14 @@
-package huffman
+package deflate.huffman
 
-class Huffman {
+import Compressor
+
+class Huffman : Compressor {
     val codeTreeNodes = mutableListOf<CodeTreeNode>()
 
     /**
      * Кодирование по Хаффману
      */
-    fun huffmanEncode(sourceText: String): String {
+    override fun encode(sourceText: String): String {
         for (char in Parser().countFrequency(sourceText).keys) {
             codeTreeNodes.add(CodeTreeNode(char, Parser().countFrequency(sourceText)[char]))
         }
@@ -20,6 +22,7 @@ class Huffman {
 
         return encoded
     }
+
 
     /**
      * Обход дерева Хаффмана
@@ -39,7 +42,7 @@ class Huffman {
     /**
      * Декодирование по Хаффману
      */
-    fun huffmanDecode(encoded: String, tree: CodeTreeNode): String {
+    fun decode(encoded: String, tree: CodeTreeNode): String {
         var decoded = ""
         var node = tree;
 
@@ -56,4 +59,5 @@ class Huffman {
         }
         return decoded
     }
+
 }
