@@ -2,7 +2,7 @@ interface Compressor {
     /**
      * Кодирование
      */
-    fun encode(str:String):String
+    fun encode(str:String):Any
 
     /**
      * Декодирование

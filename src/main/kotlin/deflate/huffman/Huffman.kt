@@ -8,9 +8,9 @@ class Huffman : Compressor {
     /**
      * Кодирование по Хаффману
      */
-    override fun encode(sourceText: String): String {
-        for (char in Parser().countFrequency(sourceText).keys) {
-            codeTreeNodes.add(CodeTreeNode(char, Parser().countFrequency(sourceText)[char]))
+    override fun encode(str: String): String {
+        for (char in Parser().countFrequency(str).keys) {
+            codeTreeNodes.add(CodeTreeNode(char, Parser().countFrequency(str)[char]))
         }
         val tree = Huffman().huffmanTreeTraversal(codeTreeNodes)
         val codes = tree.fillCodesTable()
