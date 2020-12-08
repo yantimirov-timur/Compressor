@@ -1,14 +1,12 @@
 package lz77
 
-import Compressor
+import deflate.Compressor
 
-
-class LZ77 :Compressor{
+class LZ77 : Compressor {
     var node: Node? = null
-
     var compressedResult = mutableListOf<Node>()
 
-  override  fun encode(str: String): List<Node> {
+    override fun encode(str: String): List<Node> {
         var buffer = ""
         var pos = 0
         var lenght = 0

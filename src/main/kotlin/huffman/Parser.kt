@@ -1,4 +1,4 @@
-package deflate.huffman
+package huffman
 
 import java.io.File
 

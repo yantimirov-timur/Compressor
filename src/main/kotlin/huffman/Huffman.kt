@@ -1,6 +1,6 @@
-package deflate.huffman
+package huffman
 
-import Compressor
+import deflate.Compressor
 
 class Huffman : Compressor {
     val codeTreeNodes = mutableListOf<CodeTreeNode>()

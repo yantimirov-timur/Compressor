@@ -1,4 +1,4 @@
-package deflate.huffman
+package huffman
 
 /**
  * Класс, описывающий узлы и дерево Хаффмана
@@ -19,7 +19,7 @@ data class CodeTreeNode(
     }
 
     var frequencies = Parser().frequencyTable
-    val codesMap = mutableMapOf<Char, String>().toSortedMap()
+    private val codesMap = mutableMapOf<Char, String>().toSortedMap()
 
     /**
      * Запонение таблицы символов(возможно обьединение)
