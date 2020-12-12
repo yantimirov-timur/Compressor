@@ -1,14 +1,12 @@
 package huffman
 
-import java.io.File
-
 /**
  * Класс отвечающий за обработку текста
  */
 class Parser {
-    var input = File("input//inputText").readText()
-    val frequencyTable = countFrequency(input)
-
+    /**
+     * Метод подсчитывает сколько раз встречается каждый символ
+     */
     fun countFrequency(text: String): Map<Char, Int> {
         val result = mutableMapOf<Char, Int>()
         for (char in text) {
@@ -17,7 +15,6 @@ class Parser {
             else
                 result[char] = 1
         }
-
         return result
     }
 }

@@ -2,47 +2,44 @@ package lz77
 
 import deflate.Compressor
 
-class LZ77 : Compressor {
+/**
+ * Алгоритм сжатия LZ77
+ */
+class LZ77 : Compressor<LZ77Node> {
     var node: LZ77Node? = null
     var compressedResult = mutableListOf<LZ77Node>()
 
-    override fun encode(str: String): List<LZ77Node> {
+    /**
+     * Кодирование по LZ77
+     */
+    override fun encode(source: String): List<LZ77Node> {
         var buffer = ""
         var pos = 0
-        var lenght = 0
+        var length = 0
 
-        while (pos < str.length - 1) {
-            if (str[pos] !in buffer) {
-
-                buffer += str[pos]
-
-                node = LZ77Node(0, 0, str[pos])
-
+        while (pos < source.length - 1) {
+            if (source[pos] !in buffer) {
+                buffer += source[pos]
+                node = LZ77Node(0, 0, source[pos].toString())
                 compressedResult.add(node!!)
                 pos++
             } else {
-
                 for (j in buffer.indices) {
-                    if (buffer[j] == str[pos]) {
+                    if (buffer[j] == source[pos]) {
                         pos++
-                        if (pos >= str.length) {
+                        if (pos >= source.length) {
                             pos--
                             break
                         }
-
                         buffer += buffer[j]
-                        lenght++
+                        length++
                     }
                 }
-
-                node = LZ77Node(pos - lenght, lenght, str[pos])
+                node = LZ77Node(pos - length, length, source[pos].toString())
                 compressedResult.add(node!!)
-                lenght = 0
-
+                length = 0
             }
         }
         return compressedResult
-
     }
-
 }

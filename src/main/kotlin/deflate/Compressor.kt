@@ -1,9 +1,9 @@
 package deflate
 
-interface Compressor {
+interface Compressor<T> {
     /**
      * Кодирование
      */
-    fun encode(str:String):Any
+    fun encode(source:String):List<T>
 
 }

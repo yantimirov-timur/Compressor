@@ -9,7 +9,6 @@ data class HuffmanNode(
         var leftChild: HuffmanNode? = null,
         var rightChild: HuffmanNode? = null) : Comparable<HuffmanNode> {
 
-
     constructor(content: Char?,
                 weight: Int?
     ) : this(content, weight, leftChild = null, rightChild = null)
@@ -18,21 +17,18 @@ data class HuffmanNode(
         return other.weight!! - weight!!
     }
 
-    var frequencies = Parser().frequencyTable
-    private val codesMap = mutableMapOf<Char, String>().toSortedMap()
-
     /**
-     * Запонение таблицы символов(возможно обьединение)
+     * Запонение таблицы символов
      */
-    fun fillCodesTable(): Map<Char, String> {
-        for (key in frequencies.keys) {
+    fun fillCodesTable(freq: Set<Char>): Map<Char, String> {
+        val codesMap = mutableMapOf<Char, String>().toSortedMap()
+        for (key in freq) {
             codesMap[key] = findCodeForChar(key, "")
         }
         return codesMap
     }
-
     /**
-     * Нахождение кодов для каждого символа
+     * Нахождение кодов для каждого символа (вспомогательный метод)
      */
     private fun findCodeForChar(char: Char, parentPath: String): String? {
         if (content == char)
@@ -42,7 +38,6 @@ data class HuffmanNode(
                 val path = leftChild?.findCodeForChar(char, parentPath + 0)
                 if (path != null)
                     return path
-
             }
             if (rightChild != null) {
                 val path = rightChild?.findCodeForChar(char, parentPath + 1)

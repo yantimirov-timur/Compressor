@@ -1,20 +1,27 @@
 package deflate
 
 import huffman.Huffman
-import huffman.Parser
 import lz77.LZ77
+import lz77.LZ77Node
 
-class Deflate {
-    val huffman = Huffman()
-    val lZ77 = LZ77()
+/**
+ * Класс Deflate
+ * Обьединяет в себе 2 компрессора LZ77 И Сжатие Хаффмана
+ */
+class Deflate : Compressor<LZ77Node> {
+    private val huffman = Huffman()
+    private val lZ77 = LZ77()
 
-    val lz77Encoded = lZ77.encode("abracadabra")
-
-    val encoded = huffman.encode(Parser().input)
-    val tree = huffman.huffmanTreeTraversal(huffman.codeTreeNodes)
-    val decoded = huffman.decode(encoded, tree)
-
-    fun deflateCompression() {
-        TODO()
+    override fun encode(source: String): List<LZ77Node> {
+        val lz77Encoded = lZ77.encode(source)
+        var intermediateString = ""
+        for (node in lz77Encoded) {
+            intermediateString += node.next
+        }
+        val huffmanEncoded = huffman.encode(intermediateString)
+        for ((i, node) in lz77Encoded.withIndex()) {
+            node.next = huffmanEncoded[i]
+        }
+        return lz77Encoded
     }
 }
