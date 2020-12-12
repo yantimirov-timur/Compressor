@@ -20,5 +20,4 @@ fun main() {
     println("Биты сжатой строки:  $encoded")
     println("Размеры сжатой строки:  ${encoded.length}")
     println("Расшифрованная строка: $decoded")
-
 }

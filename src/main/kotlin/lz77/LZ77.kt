@@ -3,10 +3,10 @@ package lz77
 import deflate.Compressor
 
 class LZ77 : Compressor {
-    var node: Node? = null
-    var compressedResult = mutableListOf<Node>()
+    var node: LZ77Node? = null
+    var compressedResult = mutableListOf<LZ77Node>()
 
-    override fun encode(str: String): List<Node> {
+    override fun encode(str: String): List<LZ77Node> {
         var buffer = ""
         var pos = 0
         var lenght = 0
@@ -16,7 +16,7 @@ class LZ77 : Compressor {
 
                 buffer += str[pos]
 
-                node = Node(0, 0, str[pos])
+                node = LZ77Node(0, 0, str[pos])
 
                 compressedResult.add(node!!)
                 pos++
@@ -35,7 +35,7 @@ class LZ77 : Compressor {
                     }
                 }
 
-                node = Node(pos - lenght, lenght, str[pos])
+                node = LZ77Node(pos - lenght, lenght, str[pos])
                 compressedResult.add(node!!)
                 lenght = 0
 

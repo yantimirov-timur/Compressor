@@ -3,18 +3,18 @@ package huffman
 /**
  * Класс, описывающий узлы и дерево Хаффмана
  */
-data class CodeTreeNode(
+data class HuffmanNode(
         var content: Char? = null,
         var weight: Int? = null,
-        var leftChild: CodeTreeNode? = null,
-        var rightChild: CodeTreeNode? = null) : Comparable<CodeTreeNode> {
+        var leftChild: HuffmanNode? = null,
+        var rightChild: HuffmanNode? = null) : Comparable<HuffmanNode> {
 
 
     constructor(content: Char?,
                 weight: Int?
     ) : this(content, weight, leftChild = null, rightChild = null)
 
-    override fun compareTo(other: CodeTreeNode): Int {
+    override fun compareTo(other: HuffmanNode): Int {
         return other.weight!! - weight!!
     }
 

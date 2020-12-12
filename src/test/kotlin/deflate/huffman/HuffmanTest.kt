@@ -10,9 +10,9 @@ internal class HuffmanTest {
 
     @Test
     fun huffmanEncode() {
-        val encodedTestString = "01011101101011000101110"
+        val encodedTestString = "001101101100110001011"
 
-      //  assertEquals(encodedTestString, testHuffman.huffmanEncode(Parser().input))
+       assertEquals(encodedTestString, testHuffman.encode(Parser().input))
     }
 
     @Test

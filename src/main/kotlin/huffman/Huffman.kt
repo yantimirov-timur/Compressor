@@ -3,14 +3,14 @@ package huffman
 import deflate.Compressor
 
 class Huffman : Compressor {
-    val codeTreeNodes = mutableListOf<CodeTreeNode>()
+    val codeTreeNodes = mutableListOf<HuffmanNode>()
 
     /**
      * Кодирование по Хаффману
      */
     override fun encode(str: String): String {
         for (char in Parser().countFrequency(str).keys) {
-            codeTreeNodes.add(CodeTreeNode(char, Parser().countFrequency(str)[char]))
+            codeTreeNodes.add(HuffmanNode(char, Parser().countFrequency(str)[char]))
         }
         val tree = Huffman().huffmanTreeTraversal(codeTreeNodes)
         val codes = tree.fillCodesTable()
@@ -27,12 +27,12 @@ class Huffman : Compressor {
     /**
      * Обход дерева Хаффмана
      */
-    fun huffmanTreeTraversal(codeTreeNodes: MutableList<CodeTreeNode>): CodeTreeNode {
+    fun huffmanTreeTraversal(codeTreeNodes: MutableList<HuffmanNode>): HuffmanNode {
         while (codeTreeNodes.size > 1) {
             codeTreeNodes.sort()
             val left = codeTreeNodes.removeAt(codeTreeNodes.size - 1)
             val right = codeTreeNodes.removeAt(codeTreeNodes.size - 1)
-            val parent = CodeTreeNode(null, right.weight!! + left.weight!!, left, right)
+            val parent = HuffmanNode(null, right.weight!! + left.weight!!, left, right)
 
             codeTreeNodes.add(parent)
         }
@@ -42,7 +42,7 @@ class Huffman : Compressor {
     /**
      * Декодирование по Хаффману
      */
-    fun decode(encoded: String, tree: CodeTreeNode): String {
+    fun decode(encoded: String, tree: HuffmanNode): String {
         var decoded = ""
         var node = tree;
 
