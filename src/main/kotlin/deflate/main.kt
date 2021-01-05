@@ -1,10 +1,20 @@
 package deflate
 
-fun main() {
-    /**
-     * Сжатие Deflate
-     */
-    val def = Deflate()
+import huffmanByte.HuffmanMain
+import java.io.File
 
-    def.encode("abracadabra")
+fun main() {
+    val input = File("input.txt")
+    val output = File("output")
+    val newFile = File("coded.txt")
+
+
+    // println((input.length() / 1024).toDouble())
+    //p/rintln((output.length() / 1024).toDouble())
+
+    val huffmanMain = HuffmanMain()
+
+
+  // huffmanMain.decode(output, newFile)
+    huffmanMain.encode(input, output)
 }

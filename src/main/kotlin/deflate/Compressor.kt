@@ -1,9 +1,17 @@
 package deflate
 
-interface Compressor<T> {
+import java.io.File
+
+interface Compressor {
+
     /**
      * Кодирование
      */
-    fun encode(source:String):List<T>
+    fun encode(inputFile: File, encodedFile: File)
+
+    /**
+     * Декодирование
+     */
+    fun decode(encodedFile: File,decodedFile: File)
 
 }

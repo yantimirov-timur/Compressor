@@ -11,7 +11,6 @@ internal class HuffmanTest {
         val testEncoded = listOf(
                 "01", "101", "100", "00", "00", "11", "11", "01"
         )
-        val huffman = Huffman()
-        assertEquals(testEncoded,huffman.encode("abrccdda"))
+
     }
 }

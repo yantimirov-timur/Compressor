@@ -5,7 +5,7 @@ import deflate.Compressor
 /**
  * Алгоритм сжатия LZ77
  */
-class LZ77 : Compressor<LZ77Node> {
+/**class LZ77 : Compressor<LZ77Node> {
     var node: LZ77Node? = null
     var compressedResult = mutableListOf<LZ77Node>()
 
@@ -42,4 +42,4 @@ class LZ77 : Compressor<LZ77Node> {
         }
         return compressedResult
     }
-}
+}*/
