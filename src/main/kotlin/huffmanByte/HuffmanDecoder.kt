@@ -9,14 +9,14 @@ class HuffmanDecoder {
         val index = HuffmanTree.IntHolder()
         val bitStringLength = bits.length()
         val list = mutableListOf<Byte>()
-      //  val byteList = ByteList()
+        val byteList = ByteList()
         while (index.value < bitStringLength) {
             val character = tree.decodeBitString(index, bits)
             list.add(character)
-        //    byteList.appendByte(character)
+           byteList.appendByte(character)
         }
-      //  val f = byteList.toByteArray()
+       val f = byteList.toByteArray()
         val c = list.toByteArray()
-        return c
+        return f
     }
 }

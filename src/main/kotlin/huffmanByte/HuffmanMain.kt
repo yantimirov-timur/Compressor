@@ -1,5 +1,6 @@
 package huffmanByte
 
+import HuffmanDeserializer
 import deflate.Compressor
 import java.io.File
 

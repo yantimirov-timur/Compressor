@@ -8,13 +8,8 @@ fun main() {
     val output = File("output")
     val newFile = File("coded.txt")
 
-
-    // println((input.length() / 1024).toDouble())
-    //p/rintln((output.length() / 1024).toDouble())
-
     val huffmanMain = HuffmanMain()
 
-
-  // huffmanMain.decode(output, newFile)
+    huffmanMain.decode(output, newFile)
     huffmanMain.encode(input, output)
 }
