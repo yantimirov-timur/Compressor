@@ -7,7 +7,7 @@ class HuffmanSerializer {
      */
     fun serialize(countMap: Map<Byte, Int>, encodedText: BitString): ByteArray {
         val list = mutableListOf<Byte>()
-        MAGIC.forEach { list.add(it) }
+        SIGN.forEach { list.add(it) }
         var numberOfCodeWords = countMap.size
         var numberOfBits: Int = encodedText.length()
 
@@ -40,23 +40,22 @@ class HuffmanSerializer {
 
     companion object {
         /**
-         * The magic file signature for recognizing the file type.
+         * сигнатура файла для распознавания типа файла.
          */
-        val MAGIC = byteArrayOf(0xC0.toByte(), 0xDE.toByte(), 0x0D.toByte(), 0xDE.toByte())
+        val SIGN = byteArrayOf(0xC0.toByte(), 0xDE.toByte(), 0x0D.toByte(), 0xDE.toByte())
 
         /**
-         * The number of bytes it takes to serialize one mapping from a character
-         * to its code word.
+         * Число байтов, необходимое для сериализации одного сопоставления символа с его кодовым словом.
          */
         const val BYTES_PER_WEIGHT_MAP_ENTRY = 5
 
         /**
-         * The number of bytes it takes to serialize the number of code words.
+         * Количество байтов, необходимое для сериализации количества кодовых слов.
          */
         const val BYTES_PER_CODE_WORD_COUNT_ENTRY = 4
 
         /**
-         * The number of bytes it takes to serialize the number of bits in the actual encoded text.
+         * Количество байтов, необходимое для сериализации количества битов в фактическом закодированном тексте.
          */
         const val BYTES_PER_BIT_COUNT_ENTRY = 4
     }

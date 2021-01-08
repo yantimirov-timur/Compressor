@@ -24,8 +24,8 @@ class HuffmanDeserializer {
         if (data.size < 4) {
             throw java.lang.IllegalStateException("No file type signature. The file is too short: " + data.size)
         }
-        for (i in HuffmanSerializer.MAGIC.indices) {
-            if (data[i] != HuffmanSerializer.MAGIC[i]) {
+        for (i in HuffmanSerializer.SIGN.indices) {
+            if (data[i] != HuffmanSerializer.SIGN[i]) {
                 throw IllegalStateException("Bad file type signature.")
             }
         }
@@ -60,7 +60,7 @@ class HuffmanDeserializer {
 
     private fun extractCountMap(data: ByteArray, numberOfCodeWords: Int): Map<Byte, Int> {
         val countMap = mutableMapOf<Byte, Int>().toSortedMap()
-        var dataByteIndex: Int = HuffmanSerializer.MAGIC.size +
+        var dataByteIndex: Int = HuffmanSerializer.SIGN.size +
                 HuffmanSerializer.BYTES_PER_BIT_COUNT_ENTRY +
                 HuffmanSerializer.BYTES_PER_CODE_WORD_COUNT_ENTRY
 
@@ -86,7 +86,7 @@ class HuffmanDeserializer {
         frequencyMap: Map<Byte, Int>,
         numberOfEncodedTextBits: Int
     ): BitString {
-        var omittedBytes: Int = HuffmanSerializer.MAGIC.size +
+        var omittedBytes: Int = HuffmanSerializer.SIGN.size +
                 HuffmanSerializer.BYTES_PER_BIT_COUNT_ENTRY +
                 HuffmanSerializer.BYTES_PER_CODE_WORD_COUNT_ENTRY
         omittedBytes += frequencyMap.size * HuffmanSerializer.BYTES_PER_WEIGHT_MAP_ENTRY
