@@ -1,6 +1,6 @@
 package huffmanByte
 
-import HuffmanDeserializer
+import huffmanByte.HuffmanDeserializer
 import deflate.Compressor
 import java.io.File
 
@@ -11,7 +11,7 @@ class HuffmanMain : Compressor {
         val weightMap = Parser().countFrequency(file)
         val encodeMap = HuffmanTree(weightMap).fillFrequencyTable()
         val encodedText = HuffmanEncoder().encode(encodeMap, file)
-        val data: ByteArray = HuffmanSerializer().serialize(weightMap, encodedText)
+        val data: ByteArray = HuffmanSerializer().serialize(weightMap,encodedText)
 
         encodedFile.writeBytes(data)
     }

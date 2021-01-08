@@ -10,6 +10,6 @@ fun main() {
 
     val huffmanMain = HuffmanMain()
 
-    huffmanMain.decode(output, newFile)
+   huffmanMain.decode(output, newFile)
     huffmanMain.encode(input, output)
 }

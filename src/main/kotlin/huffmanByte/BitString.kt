@@ -77,12 +77,10 @@ class BitString {
      */
 
     fun toByteArray(): ByteArray {
-        val numberOfBytes = size / java.lang.Byte.SIZE +
-                if (size % java.lang.Byte.SIZE == 0) 0 else 1
+        val numberOfBytes = size / java.lang.Byte.SIZE + if (size % java.lang.Byte.SIZE == 0) 0 else 1
         val byteArray = ByteArray(numberOfBytes)
         for (i in 0 until numberOfBytes) {
-            byteArray[i] = ((storageLongs[i / java.lang.Long.BYTES]
-                    ushr java.lang.Byte.SIZE * (i % java.lang.Long.BYTES)) and 0xff).toByte()
+            byteArray[i] = ((storageLongs[i / java.lang.Long.BYTES] ushr java.lang.Byte.SIZE * (i % java.lang.Long.BYTES)) and 0xff).toByte()
         }
         return byteArray
     }
