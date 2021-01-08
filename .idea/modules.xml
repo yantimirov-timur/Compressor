@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Compressor_Kt.iml" filepath="$PROJECT_DIR$/.idea/Compressor_Kt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/main/java.iml" filepath="$PROJECT_DIR$/src/main/java.iml" />
     </modules>
   </component>
 </project>

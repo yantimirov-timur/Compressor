@@ -1,4 +1,4 @@
-package huffmanByte
+package huffman
 
 class HuffmanDecoder {
 

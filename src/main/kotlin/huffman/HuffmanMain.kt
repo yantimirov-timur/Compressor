@@ -1,7 +1,6 @@
-package huffmanByte
+package huffman
 
-import huffmanByte.HuffmanDeserializer
-import deflate.Compressor
+import application.Compressor
 import java.io.File
 
 class HuffmanMain : Compressor {

@@ -1,4 +1,4 @@
-package huffmanByte
+package huffman
 
 import java.util.*
 

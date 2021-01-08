@@ -1,4 +1,4 @@
-package huffmanByte
+package huffman
 
 
 import java.lang.Byte.toUnsignedInt
@@ -22,24 +22,18 @@ class HuffmanDeserializer {
 
     private fun checkSignature(data: ByteArray) {
         if (data.size < 4) {
-            throw java.lang.IllegalStateException(
-                "No file type signature. The file is too short: " + data.size
-            )
+            throw java.lang.IllegalStateException("No file type signature. The file is too short: " + data.size)
         }
         for (i in HuffmanSerializer.MAGIC.indices) {
             if (data[i] != HuffmanSerializer.MAGIC[i]) {
-                throw IllegalStateException(
-                    "Bad file type signature."
-                )
+                throw IllegalStateException("Bad file type signature.")
             }
         }
     }
 
     private fun extractNumberOfCodeWords(data: ByteArray): Int {
         if (data.size < 8) {
-            throw IllegalStateException(
-                "No number of code words. The file is too short: " + data.size
-            )
+            throw IllegalStateException("No number of code words. The file is too short: " + data.size)
         }
         var numberOfCodeWords = 0
         numberOfCodeWords = numberOfCodeWords or (toUnsignedInt(data[7]) shl 24)

@@ -1,4 +1,4 @@
-package huffmanByte
+package huffman
 
 /**
  * Класс отвечающий за обработку текста

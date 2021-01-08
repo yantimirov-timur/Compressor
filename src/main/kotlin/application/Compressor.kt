@@ -1,4 +1,4 @@
-package deflate
+package application
 
 import java.io.File
 
